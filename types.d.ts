@@ -1,21 +1,16 @@
-type Meta = {
-    id: string,
-    title: string,
-    date: string,
-    highlight: string,
-    desc: string;
-    benner: string;
-    tags: string[],
-    toc: TOCItem[]
-}
-
-type BlogPost = {
-    meta: Meta,
-    content: ReactElement<any, string | JSXElementConstructor<any>>,
-}
-
-type TOCItem = {
-  level: number;
+type PostMeta = {
+  slug: string;
   title: string;
-  anchor: string;
-}
+  description: string;
+  banner: string;
+  publishedAt: string;
+  tags: string;
+  category: string;
+  wordCount: number;
+  readingTime: ReadTimeResults;
+};
+type PostType = {
+  code: string;
+  frontmatter: PostMeta;
+};
+type CategoryType = 'blog' | 'library' | 'projects';

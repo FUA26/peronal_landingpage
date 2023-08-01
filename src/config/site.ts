@@ -12,7 +12,7 @@ export const siteConfig = {
     },
     {
       title: "Project",
-      href: "/project",
+      href: "/projects",
       desc: "Explore my project portfolio. Get an overview of the works I have undertaken and my capabilities in various fields."
     },
     {
