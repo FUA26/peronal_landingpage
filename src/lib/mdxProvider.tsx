@@ -95,3 +95,10 @@ export async function getAllFileMeta<T extends CategoryType>(type: T) {
     return res;
   }, []);
 }
+
+export function filterBySlugs(
+  content: PostMeta[],
+  slugs: string[]
+): PostMeta[] {
+  return content.filter((item) => slugs.includes(item.slug));
+}

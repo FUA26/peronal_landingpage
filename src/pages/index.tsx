@@ -9,10 +9,16 @@ import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
+import { filterBySlugs, getAllFileMeta } from "@/lib/mdxProvider";
+import { InferGetStaticPropsType } from "next";
+import { Badge } from "@/components/ui/badge";
+import ProjectCard from "@/components/sections/projectCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({
+  higlight,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
       <HeroSection />
@@ -68,6 +74,35 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <section className="flex w-full flex-col flex-wrap md:flex-row">
+        <div className="basis-full  md:basis-1/2 p-4">
+          <h2 className="py-4 text-4xl font-bold text-main">
+            Featured Projects
+          </h2>
+          <p className="text-justify text-lg text-foreground/70">
+            Explore a curated collection of my selected projects that highlight
+            my expertise and passion in the world of technology. Each project
+            represents a unique journey where I&rsquo;ve designed innovative
+            solutions and overcome challenges with determination.
+          </p>
+          <Button className="my-6">Explore More Projects</Button>
+        </div>
+
+        {higlight.map((post, i) => {
+          return <ProjectCard key={i} post={post} />;
+        })}
+      </section>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const projects = await getAllFileMeta("projects");
+  const selectedSlugs = ["sepasang-janji", "vascomm-landing", "pre-rendering"];
+  const higlight = await filterBySlugs(projects, selectedSlugs);
+  return {
+    props: {
+      higlight,
+    },
+  };
 }

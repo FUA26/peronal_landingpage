@@ -1,7 +1,7 @@
 type PostMeta = {
   slug: string;
   title: string;
-  description: string;
+  desc: string;
   banner: string;
   publishedAt: string;
   tags: string;
