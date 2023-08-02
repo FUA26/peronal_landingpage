@@ -13,6 +13,7 @@ import { filterBySlugs, getAllFileMeta } from "@/lib/mdxProvider";
 import { InferGetStaticPropsType } from "next";
 import { Badge } from "@/components/ui/badge";
 import ProjectCard from "@/components/sections/projectCard";
+import NoteCard from "@/components/sections/noteCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -91,6 +92,28 @@ export default function Home({
         {higlight.map((post, i) => {
           return <ProjectCard key={i} post={post} />;
         })}
+      </section>
+      <section className="my-10">
+        <div className="w-1/2 m-auto text-center">
+          <h2 className="py-4 text-4xl font-bold text-main">
+            Featured Projects
+          </h2>
+          <p className="text-center text-lg text-foreground/70">
+            Browse through my blog posts. Discover insights, stories, and
+            knowledge that I share.
+          </p>
+        </div>
+        <div className="flex w-full flex-col flex-wrap md:flex-row ">
+          {higlight.map((post, i) => {
+            return <NoteCard key={i} post={post} />;
+          })}
+        </div>
+
+        <div className=" text-center">
+          <Button variant="outline" className="my-6">
+            Explore More Projects
+          </Button>
+        </div>
       </section>
     </Layout>
   );
