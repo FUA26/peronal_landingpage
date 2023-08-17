@@ -36,11 +36,11 @@ export default function Home({
               />
             </div>
           </div>
-          <div className="basis-1/2 p-6 text-foreground">
+          <div className="basis-1/2 p-0 md:p-6 text-foreground">
             <p className="py-5 text-4xl font-bold text-main">
               A Journey Through My Tech Ventures
             </p>
-            <p className="text-lg text-foreground/70">
+            <p className="text-lg text-foreground/70 text-justify">
               With over five years of experience in the technology industry, my
               journey has been driven by a passion for startups and a dedication
               to crafting innovative solutions. Throughout my career, I have
@@ -76,7 +76,7 @@ export default function Home({
         </div>
       </div>
       <section className="flex w-full flex-col flex-wrap md:flex-row">
-        <div className="basis-full  md:basis-1/2 p-4">
+        <div className="basis-full  md:basis-1/2 p-6">
           <h2 className="py-4 text-4xl font-bold text-main">
             Featured Projects
           </h2>
@@ -94,7 +94,7 @@ export default function Home({
         })}
       </section>
       <section className="my-10">
-        <div className="w-1/2 m-auto text-center">
+        <div className="w-full p-6 md:w-1/2 m-auto text-center">
           <h2 className="py-4 text-4xl font-bold text-main">
             Featured Projects
           </h2>

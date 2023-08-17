@@ -24,7 +24,7 @@ export default function Home({
         </div>
         <div className="my-8 w-full flex-wrap flex">
           {projects.map((post, i) => (
-            <div key={i} className="basis-1/2">
+            <div key={i} className="basis-auto md:basis-1/2">
               <ProjectCard post={post} />
             </div>
           ))}

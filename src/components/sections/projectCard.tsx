@@ -9,7 +9,7 @@ type Props = {
 
 export default function ProjectCard({ post }: Props) {
   return (
-    <div className="group transition-transform duration-200 ease-in-out p-4 w-full basis-1/2 hover:scale-105">
+    <div className="group transition-transform duration-200 ease-in-out p-4 w-full basis-auto md:basis-1/2 hover:scale-105 overflow-hidden">
       <Link href={`/projects/${post.slug}`}>
         <div className="bg-white p dark:bg-gray-800 rounded-2xl w-full h-full min-h-[250px] flex flex-col md:flex-row cursor-grab  group-hover:drop-shadow-xl transition-shadow ease-out duration-200 overflow-auto">
           <div className="basis-1/2 p-4">

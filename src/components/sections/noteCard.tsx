@@ -10,7 +10,7 @@ type Props = {
 
 export default function NoteCard({ post }: Props) {
   return (
-    <div className="group transition-transform duration-200 ease-in-out p-4 w-full basis-full  md:basis-1/2 lg:basis-1/3 hover:scale-105">
+    <div className="group transition-transform duration-200 ease-in-out p-4 w-full basis-full  md:basis-1/2 lg:basis-1/3 hover:scale-105 overflow-hidden">
       <Link href={`/projects/${post.slug}`}>
         <div className="bg-white p dark:bg-gray-800 rounded-2xl w-full h-full aspect-square flex flex-col  cursor-grab  group-hover:drop-shadow-xl transition-shadow ease-out duration-200 overflow-auto">
           <div className="h-1/2 overflow-hidden">

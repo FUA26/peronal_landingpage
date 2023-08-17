@@ -31,18 +31,7 @@ export async function getFileBySlug(type: CategoryType, slug: string) {
       options.rehypePlugins = [
         ...(options?.rehypePlugins ?? []),
         rehypeSlug,
-        () =>
-          rehypePrettyCode({
-            theme: "css-variables",
-          }),
-        [
-          rehypeAutolinkHeadings,
-          {
-            properties: {
-              className: ["hash-anchor"],
-            },
-          },
-        ],
+        rehypePrettyCode,
       ];
 
       return options;

@@ -4,10 +4,11 @@ type PostMeta = {
   desc: string;
   banner: string;
   publishedAt: string;
-  tags: string;
+  tags: string[];
   category: string;
   wordCount: number;
   readingTime: ReadTimeResults;
+  toc: any
 };
 type PostType = {
   code: string;
