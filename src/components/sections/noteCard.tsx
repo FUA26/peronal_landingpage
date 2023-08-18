@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Badge } from "../ui/badge";
+import { format } from "date-fns";
 import Image from "next/image";
 import { CalendarIcon, TimerIcon } from "@radix-ui/react-icons";
 
@@ -10,34 +11,41 @@ type Props = {
 
 export default function NoteCard({ post }: Props) {
   return (
-    <div className="group transition-transform duration-200 ease-in-out p-4 w-full basis-full  md:basis-1/2 lg:basis-1/3 hover:scale-105 overflow-hidden">
-      <Link href={`/projects/${post.slug}`}>
-        <div className="bg-white p dark:bg-gray-800 rounded-2xl w-full h-full aspect-square flex flex-col  cursor-grab  group-hover:drop-shadow-xl transition-shadow ease-out duration-200 overflow-auto">
-          <div className="h-1/2 overflow-hidden">
-            <div className="relative  h-full rounded-2xl group-hover:scale-105 transition ease-in-out duration-200 overflow-hidden">
-              <Image
-                src={`/images/contents/${post.banner}`}
-                alt={post.title}
-                fill
-              />
-            </div>
-          </div>
-          <div className="h-1/2 py-2 px-4">
-            <Badge variant="outline">{post.category}</Badge>
-            <h2 className="text-xl font-bold my-2">{post.title}</h2>
-            <div className="flex gap-2 my-1">
-              <div className="text-xs  flex items-center gap-1">
-                <CalendarIcon /> {post.publishedAt}
+    <>
+      <article className=" overflow-hidden rounded-lg shadow transition hover:shadow-lg dark:shadow-gray-700/25">
+        <Image
+          alt="Office"
+          src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+          className="h-56 w-full object-cover"
+          width={2070}
+          height={1380}
+        />
+        <Link href={`/blog/${post.slug}`}>
+          <div className="bg-white p-4 dark:bg-gray-900 sm:p-6">
+            <h3 className="mt-0.5 text-lg text-gray-900 dark:text-white font-medium">
+              {post.title}
+            </h3>
+            <time
+              dateTime={post.publishedAt}
+              className="block text-xs text-gray-500 dark:text-gray-400">
+              {post.publishedAt}
+            </time>
+            <div className="flex gap-2 my-1 text-xs text-gray-500 dark:text-gray-400">
+              <div className="  flex items-center gap-1">
+                <CalendarIcon />{" "}
+                {format(new Date(post.publishedAt), "MMMM dd, yyyy")}
               </div>
-              <div className="text-xs  flex items-center gap-1">
+              <div className="  flex items-center gap-1">
                 <TimerIcon /> {post.readingTime.text}
               </div>
             </div>
 
-            <p className="text-sm">{post.desc}</p>
+            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+              {post.desc}
+            </p>
           </div>
-        </div>
-      </Link>
-    </div>
+        </Link>
+      </article>
+    </>
   );
 }

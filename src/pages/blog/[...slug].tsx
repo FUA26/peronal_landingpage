@@ -27,21 +27,6 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
       <Container>
         <div className="pt-16 flex flex-wrap">
           <div className="w-full">
-            <div className="p-6 w-full md:w-1/2 m-auto text-center">
-              <h1 className="text-4xl font-semibold">{frontmatter.title}</h1>
-              <p className="text-lg my-2 italic text-foreground/70">
-                {frontmatter.desc}
-              </p>
-              {/* <div className="flex gap-2 my-1 justify-center">
-                <div className="  flex items-center gap-1">
-                  <CalendarIcon />{" "}
-                  {format(new Date(frontmatter.publishedAt), "yyyy")}
-                </div>
-                <div className="  flex items-center gap-1">
-                  <TimerIcon /> {frontmatter.readingTime.text}
-                </div>
-              </div> */}
-            </div>
             <div className="relative aspect-[16/9] w-full ">
               <Image
                 className="rounded-2xl"
@@ -54,8 +39,23 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
+            <div className="py-6 w-full ">
+              <h1 className="text-4xl font-semibold">{frontmatter.title}</h1>
+              <p className="text-lg my-2 italic text-foreground/70">
+                {frontmatter.desc}
+              </p>
+              <div className="flex gap-2 my-1 ">
+                <div className="  flex items-center gap-1">
+                  <CalendarIcon />{" "}
+                  {format(new Date(frontmatter.publishedAt), "MMMM dd, yyyy")}
+                </div>
+                <div className="  flex items-center gap-1">
+                  <TimerIcon /> {frontmatter.readingTime.text}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="w-3/4 m-auto">
+          <div className="w-3/4 ">
             <div className="">
               <article className="mdx prose max-w-4xl mt-4 w-full transition-colors dark:prose-invert">
                 <Component

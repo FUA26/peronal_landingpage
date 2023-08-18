@@ -9,13 +9,17 @@ type Props = {
 
 export default function ProjectCard({ post }: Props) {
   return (
-    <div className="group transition-transform duration-200 ease-in-out p-4 w-full basis-auto md:basis-1/2 hover:scale-105 overflow-hidden">
+    <div className="group  overflow-hidden rounded-lg shadow transition hover:shadow-lg dark:shadow-gray-700/25">
       <Link href={`/projects/${post.slug}`}>
         <div className="bg-white p dark:bg-gray-800 rounded-2xl w-full h-full min-h-[250px] flex flex-col md:flex-row cursor-grab  group-hover:drop-shadow-xl transition-shadow ease-out duration-200 overflow-auto">
           <div className="basis-1/2 p-4">
             <Badge variant="outline">{post.category}</Badge>
-            <h2 className="text-2xl font-bold my-3">{post.title}</h2>
-            <p className="text-base">{post.desc}</p>
+            <h2 className="text-2xl/relaxed font-semibold leading-tight my-3">
+              {post.title}
+            </h2>
+            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+              {post.desc}
+            </p>
           </div>
           <div className="basis-1/2 h-full overflow-hidden">
             <div className="relative aspect-[16/9] h-full rounded-2xl group-hover:scale-105 transition ease-in-out duration-200 top-4 left-4 overflow-hidden">

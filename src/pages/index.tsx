@@ -40,7 +40,7 @@ export default function Home({
             <p className="py-5 text-4xl font-bold text-main">
               A Journey Through My Tech Ventures
             </p>
-            <p className="text-lg text-foreground/70 text-justify">
+            <p className="text-base/relaxed text-foreground/70 text-justify">
               With over five years of experience in the technology industry, my
               journey has been driven by a passion for startups and a dedication
               to crafting innovative solutions. Throughout my career, I have
@@ -54,19 +54,22 @@ export default function Home({
               <div className="my-4 flex gap-4 text-foreground/50">
                 <Link
                   className="flex items-center gap-1"
-                  href="www.fatihua.com">
+                  href="https://drive.google.com/file/d/10TjqcZvnFxkFKEFUIPyBsARzenuTkHge/view?usp=sharing"
+                  target="_blank">
                   <FileTextIcon />
                   Resume
                 </Link>
                 <Link
                   className="flex items-center gap-1"
-                  href="www.fatihua.com">
+                  href="https://www.linkedin.com/in/fatih-ulil-albab-27b47b16b/"
+                  target="_blank">
                   <LinkedInLogoIcon />
                   Linkedin
                 </Link>
                 <Link
                   className="flex items-center gap-1"
-                  href="www.fatihua.com">
+                  href="https://github.com/FUA26"
+                  target="_blank">
                   <GitHubLogoIcon />
                   Github
                 </Link>
@@ -75,12 +78,13 @@ export default function Home({
           </div>
         </div>
       </div>
-      <section className="flex w-full flex-col flex-wrap md:flex-row">
+
+      <section className="grid gap-4 grid-cols-1 md:grid-cols-2">
         <div className="basis-full  md:basis-1/2 p-6">
           <h2 className="py-4 text-4xl font-bold text-main">
             Featured Projects
           </h2>
-          <p className="text-justify text-lg text-foreground/70">
+          <p className="text-justify text-base/relaxed text-foreground/70">
             Explore a curated collection of my selected projects that highlight
             my expertise and passion in the world of technology. Each project
             represents a unique journey where I&rsquo;ve designed innovative
@@ -93,19 +97,24 @@ export default function Home({
           return <ProjectCard key={i} post={post} />;
         })}
       </section>
+
       <section className="my-10">
         <div className="w-full p-6 md:w-1/2 m-auto text-center">
           <h2 className="py-4 text-4xl font-bold text-main">
             Featured Projects
           </h2>
-          <p className="text-center text-lg text-foreground/70">
+          <p className="text-center text-base/relaxed text-foreground/70">
             Browse through my blog posts. Discover insights, stories, and
             knowledge that I share.
           </p>
         </div>
-        <div className="flex w-full flex-col flex-wrap md:flex-row ">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {higlight.map((post, i) => {
-            return <NoteCard key={i} post={post} />;
+            return (
+              <div key={i} className="w-full">
+                <NoteCard post={post} />
+              </div>
+            );
           })}
         </div>
 
