@@ -67,10 +67,7 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
                 />
               </article>
             </div>
-            <section className="mt-6">
-              <h3 className="font-medium text-xl">Related:</h3>
-              <div className="flex flex-row gap-4">{tags}</div>
-            </section>
+
             <p className="my-6">
               <Link href="/">
                 <Button>← Back to home</Button>

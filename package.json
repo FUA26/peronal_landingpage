@@ -47,6 +47,7 @@
     "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.2",
     "remark-slug": "^7.0.1",
+    "sharp": "^0.32.5",
     "shiki": "^0.14.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.6",

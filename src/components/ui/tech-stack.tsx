@@ -2,6 +2,10 @@ import clsx from "clsx";
 import * as React from "react";
 import { IoLogoVercel } from "react-icons/io5";
 import {
+  SiBootstrap,
+  SiExpress,
+  SiLaravel,
+  SiMysql,
   SiNextdotjs,
   SiNodedotjs,
   SiReact,
@@ -50,5 +54,25 @@ const stacks = [
   {
     id: "node",
     icon: SiNodedotjs,
+  },
+  {
+    id: "laravel",
+    icon: SiLaravel,
+  },
+  {
+    id: "bootstrap",
+    icon: SiBootstrap,
+  },
+  {
+    id: "mysql",
+    icon: SiMysql,
+  },
+  {
+    id: "nest",
+    icon: SiMysql,
+  },
+  {
+    id: "express",
+    icon: SiExpress,
   },
 ];

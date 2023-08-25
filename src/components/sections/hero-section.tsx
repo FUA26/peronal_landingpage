@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
-export const HeroSection = () => {
+const HeroSection = () => {
   const [text] = useTypewriter({
     words: [
       "Frontend Developer",
@@ -32,3 +32,4 @@ export const HeroSection = () => {
     </main>
   );
 };
+export default HeroSection;

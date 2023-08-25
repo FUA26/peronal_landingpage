@@ -15,7 +15,7 @@ export default function Blog({
     <Layout>
       <Container>
         <div className="row w-full pt-16">
-          <div className="my-4">
+          <div className="my-4 p-4">
             <p className="py-4 text-4xl font-bold text-main">Blog</p>
             <p className="text-base text-foreground/70">
               Explore my project portfolio. Get an overview of the works I have
@@ -23,7 +23,7 @@ export default function Blog({
             </p>
           </div>
         </div>
-        <div className="grid my-8 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+        <div className="grid p-4 my-8 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {projects.map((post, i) => {
             return (
               <div key={i} className="w-full">
@@ -38,7 +38,7 @@ export default function Blog({
 }
 
 export async function getStaticProps() {
-  const projects = await getAllFileMeta("projects");
+  const projects = await getAllFileMeta("blogs");
   // console.log(projects);
   // console.log(higlight);
   return {

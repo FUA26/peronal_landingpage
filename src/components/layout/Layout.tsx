@@ -3,12 +3,14 @@ import { Inter } from "next/font/google";
 import * as React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import MetaHead from "../meta-head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={inter.className}>
+      <MetaHead />
       <Header />
       <div className="mx-auto max-w-5xl ">{children}</div>
       <Footer />

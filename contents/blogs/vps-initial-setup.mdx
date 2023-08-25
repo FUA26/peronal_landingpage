@@ -1,0 +1,71 @@
+---
+title: "VPS: A Beginner's Guide to Initial VPS Ubuntu Configuration"
+publishedAt: "2023-06-25"
+desc: " A step-by-step guide for beginners on the initial setup of a Virtual Private Server (VPS) with Ubuntu OS"
+tags: ["vps", "ubuntu"]
+highlight: 2
+category: "Tutorial"
+banner: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31"
+---
+
+## Setup SSH
+
+In this tutorial, we will try to learn how to set up a VPS. Virtual Private Server (VPS) itself is a vm service that is usually provided by hosting providers. Currently there are many VPS providers that are easy to access. When we already have a VPS, we can start the setup. The first step that must be done is that we can access the VPS. One of the tools that can be used is SSH.
+
+```bash
+ssh username@hostname
+
+`* contoh
+ssh fatih@123.432.012.010
+*`
+```
+
+When the above command is successfully executed, we are already in the virtual machine. After entering into the vps, update and upgrade the latest dependencies from the OS that you are using.
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+After the process of updating and upgrading the dependencies of the OS.
+
+```bash
+sudo ufw app list
+
+`*
+Available applications:
+ OpenSSH
+*`
+```
+
+The command above is used to display a list of application profiles that have been configured in a firewall using UFW (Uncomplicated Firewall). These application profiles contain predefined rules to allow certain network traffic for certain applications or services. From here we can see that OpenSSH is an application that is still not active, so it needs a command to activate it
+
+```bash
+sudo ufw allow OpenSSH
+`*
+Rules updated
+Rules updated (v6)
+*`
+
+sudo ufw enable
+
+`*
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+*`
+```
+
+After the activation command above is executed, the firewall is active, we can see what applications are included in the firewall list with the following command.
+
+```bash
+sudo ufw status
+
+`*
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+*`
+```

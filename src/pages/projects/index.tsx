@@ -22,12 +22,10 @@ export default function Home({
             </p>
           </div>
         </div>
-        <div className="my-8 w-full flex-wrap flex">
-          {projects.map((post, i) => (
-            <div key={i} className="basis-auto md:basis-1/2">
-              <ProjectCard post={post} />
-            </div>
-          ))}
+        <div className="my-8 p-4 grid gap-4 grid-cols-1 md:grid-cols-2">
+          {projects.map((post, i) => {
+            return <ProjectCard key={i} post={post} />;
+          })}
         </div>
       </Container>
     </Layout>

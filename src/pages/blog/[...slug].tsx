@@ -26,12 +26,12 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
     <Layout>
       <Container>
         <div className="pt-16 flex flex-wrap">
-          <div className="w-full">
-            <div className="relative aspect-[16/9] w-full ">
+          <div className="w-full p-6">
+            <div className="relative mt-4 h-80 w-full">
               <Image
                 className="rounded-2xl"
-                src={`/images/contents/${frontmatter.banner}`}
-                alt="Profile Image"
+                src={frontmatter.banner}
+                alt={`Image ${frontmatter.title}`}
                 fill
                 style={{
                   objectFit: "cover",
@@ -55,7 +55,7 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
               </div>
             </div>
           </div>
-          <div className="w-3/4 ">
+          <div className="w-full p-6">
             <div className="">
               <article className="mdx prose max-w-4xl mt-4 w-full transition-colors dark:prose-invert">
                 <Component
@@ -84,7 +84,7 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllFiles("projects");
+  const posts = await getAllFiles("blogs");
   console.log(posts);
   return {
     paths: posts.map((slug) => ({
@@ -102,7 +102,7 @@ interface Params extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Params;
 
-  const post = await getFileBySlug("projects", slug.join("/"));
+  const post = await getFileBySlug("blogs", slug.join("/"));
 
   return {
     props: { ...post },

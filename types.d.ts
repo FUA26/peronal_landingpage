@@ -14,4 +14,4 @@ type PostType = {
   code: string;
   frontmatter: PostMeta;
 };
-type CategoryType = 'blog' | 'library' | 'projects';
+type CategoryType = 'blogs' | 'library' | 'projects';

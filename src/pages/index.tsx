@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/layout/Layout";
-import { HeroSection } from "./components/hero-section";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -11,14 +11,15 @@ import {
 } from "@radix-ui/react-icons";
 import { filterBySlugs, getAllFileMeta } from "@/lib/mdxProvider";
 import { InferGetStaticPropsType } from "next";
-import { Badge } from "@/components/ui/badge";
 import ProjectCard from "@/components/sections/projectCard";
 import NoteCard from "@/components/sections/noteCard";
+import HeroSection from "../components/sections/hero-section";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({
   higlight,
+  blogs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
@@ -50,7 +51,9 @@ export default function Home({
               orchestrate projects with finesse.
             </p>
             <div className="mt-6">
-              <Button>Explore More About Me</Button>
+              <Link href="/about">
+                <Button>Explore More About Me</Button>
+              </Link>
               <div className="my-4 flex gap-4 text-foreground/50">
                 <Link
                   className="flex items-center gap-1"
@@ -79,8 +82,8 @@ export default function Home({
         </div>
       </div>
 
-      <section className="grid gap-4 grid-cols-1 md:grid-cols-2">
-        <div className="basis-full  md:basis-1/2 p-6">
+      <section className="grid p-6 gap-4 grid-cols-1 md:grid-cols-2">
+        <div className="basis-full md:basis-1/2">
           <h2 className="py-4 text-4xl font-bold text-main">
             Featured Projects
           </h2>
@@ -108,8 +111,8 @@ export default function Home({
             knowledge that I share.
           </p>
         </div>
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-          {higlight.map((post, i) => {
+        <div className="grid p-6 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+          {blogs.map((post, i) => {
             return (
               <div key={i} className="w-full">
                 <NoteCard post={post} />
@@ -130,11 +133,17 @@ export default function Home({
 
 export async function getStaticProps() {
   const projects = await getAllFileMeta("projects");
-  const selectedSlugs = ["sepasang-janji", "vascomm-landing", "pre-rendering"];
+  const blogs = await getAllFileMeta("blogs");
+  const selectedSlugs = [
+    "sepasang-janji",
+    "vascomm-landing",
+    "wizonline-builder",
+  ];
   const higlight = await filterBySlugs(projects, selectedSlugs);
   return {
     props: {
       higlight,
+      blogs,
     },
   };
 }

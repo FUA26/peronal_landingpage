@@ -1,0 +1,118 @@
+---
+title: "NestJS: Installing and Setting Up Global Configuration Variables"
+publishedAt: "2023-06-25"
+desc: "Master the installation of NestJS and harness the potential of Global Configuration Variables with this step-by-step tutorial"
+tags: ["nest", "backend"]
+highlight: 2
+category: "Tutorial"
+banner: "https://images.unsplash.com/photo-1573865526739-10659fec78a5"
+---
+
+## Introduction
+
+For those who don't know, NestJs is a backend framework with a typescript programming language with an architecture similar to Angular. Basically NestJs uses base Express, so if you already know express it will be much easier to start using NestJs.
+
+##Installation NestJs This step contains instructions for installing NestJS and creating a new project using the CLI.
+
+```bash
+npm i -g @nestjs/cli
+nest new project-name
+```
+
+After the NestJs setup and installation process is complete, we can run the project in development mode, use the following command.
+
+```bash
+npm run start:dev
+```
+
+##Install Nest Config The next step is to setup the Environment by installing the required dependencies. Note that @nestjs/config only runs on TypeScript 4.1 or later.
+
+```
+npm i --save @nestjs/config
+```
+
+##Setup Global Config After the installation is complete, we can use the ConfigModule. Typically, we use it in an AppModule and set its behavior with .forRoot(). Here, the environment variables are parsed and parsed.
+
+```
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+
+@Module({
+  imports: [ConfigModule.forRoot()],
+})
+export class AppModule {}
+```
+
+To set the configuration, create a new folder named "config" inside the "src" folder. Inside that folder, create two new files: "config.type.ts" and "app.config.ts". The "config.type.ts" file is used to define the type of configuration to be used, while the "app.config.ts" file contains the actual configuration used in the application. Don't forget to fill in the two files with configurations that suit your application needs.
+
+```
+#config.type.ts
+export type AppConfig = {
+  nodeEnv: string;
+  name: string;
+  workingDirectory: string;
+  frontendDomain?: string;
+  backendDomain: string;
+  port: number;
+  apiPrefix: string;
+};
+```
+
+```
+#app.config.ts
+import { registerAs } from '@nestjs/config';
+import { AppConfig } from './config.type';
+
+export default registerAs<AppConfig>('app', () => ({
+  nodeEnv: process.env.NODE_ENV || 'development',
+  name: process.env.APP_NAME || 'app',
+  workingDirectory: process.env.PWD || process.cwd(),
+  frontendDomain: process.env.FRONTEND_DOMAIN,
+  backendDomain: process.env.BACKEND_DOMAIN ?? 'http://localhost',
+  port: process.env.APP_PORT
+    ? parseInt(process.env.APP_PORT, 10)
+    : process.env.PORT
+    ? parseInt(process.env.PORT, 10)
+    : 3000,
+  apiPrefix: process.env.API_PREFIX || 'api',
+}));
+```
+
+To update app.module.ts, add a new configuration in the load section.
+
+```
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import appConfig from './config/app.config';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [appConfig],
+      envFilePath: ['.env'],
+    }),
+  ],
+  controllers: [],
+  providers: [],
+})
+export class AppModule {}
+```
+
+Usage examples in main.ts
+
+```
+import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { AllConfigType } from './config/config.type';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService) as ConfigService<AllConfigType>;
+  await app.listen(configService.get('app.port', { infer: true }));
+}
+bootstrap();
+```
+
+infer:true is used to infer the property type based on Interface or Type
