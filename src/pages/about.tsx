@@ -10,7 +10,7 @@ const tech = [
   {
     id: "tailwind",
     name: "I Love Tailwind",
-    image: "/images/tailwind.webp",
+    image: "/images/icons/tailwind.webp",
     width: 80,
     height: 45,
     class: "top-[120px] left-[375px]",
@@ -18,7 +18,7 @@ const tech = [
   {
     id: "nest",
     name: "My Favorite Backend Framework",
-    image: "/images/nest.webp",
+    image: "/images/icons/nest.webp",
     width: 70,
     height: 70,
     class: "top-[350px] left-[235px]",
@@ -26,7 +26,7 @@ const tech = [
   {
     id: "ts",
     name: "Still learn",
-    image: "/images/ts.webp",
+    image: "/images/icons/ts.webp",
     width: 70,
     height: 70,
     class: "top-[55px] left-[75px]",
@@ -34,7 +34,7 @@ const tech = [
   {
     id: "js",
     name: "My Favorite Language",
-    image: "/images/js.webp",
+    image: "/images/icons/js.webp",
     width: 70,
     height: 70,
     class: "top-[15px] left-[215px]",
@@ -42,7 +42,7 @@ const tech = [
   {
     id: "laravel",
     name: "First Love",
-    image: "/images/laravel.webp",
+    image: "/images/icons/laravel.webp",
     width: 70,
     height: 70,
     class: "top-[185px] left-[185px]",
@@ -51,7 +51,7 @@ const tech = [
   {
     id: "Docker",
     name: "Make Everything Simple",
-    image: "/images/docker.webp",
+    image: "/images/icons/docker.webp",
     width: 70,
     height: 70,
     class: "top-[225px] left-[455px]",
@@ -59,7 +59,7 @@ const tech = [
   {
     id: "vite",
     name: "Basic and Fast",
-    image: "/images/vite.webp",
+    image: "/images/icons/vite.webp",
     width: 70,
     height: 70,
     class: "top-[35px] left-[545px]",
@@ -67,7 +67,7 @@ const tech = [
   {
     id: "next",
     name: "Most Powefull Today",
-    image: "/images/nextjs.webp",
+    image: "/images/icons/nextjs.webp",
     width: 70,
     height: 70,
     class: "top-[335px] left-[515px]",
@@ -75,7 +75,7 @@ const tech = [
   {
     id: "rq",
     name: "Easy to Fetch Data",
-    image: "/images/reactquery.webp",
+    image: "/images/icons/reactquery.webp",
     width: 70,
     height: 70,
     class: "top-[285px] left-[65px]",
