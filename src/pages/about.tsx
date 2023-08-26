@@ -10,7 +10,7 @@ const tech = [
   {
     id: "tailwind",
     name: "I Love Tailwind",
-    image: "/images/icons/tailwind.webp",
+    image: "/images/icons/Tailwind.webp",
     width: 80,
     height: 45,
     class: "top-[120px] left-[375px]",
@@ -18,7 +18,7 @@ const tech = [
   {
     id: "nest",
     name: "My Favorite Backend Framework",
-    image: "/images/icons/nest.webp",
+    image: "/images/icons/Nest.webp",
     width: 70,
     height: 70,
     class: "top-[350px] left-[235px]",
@@ -26,7 +26,7 @@ const tech = [
   {
     id: "ts",
     name: "Still learn",
-    image: "/images/icons/ts.webp",
+    image: "/images/icons/Ts.webp",
     width: 70,
     height: 70,
     class: "top-[55px] left-[75px]",
@@ -34,7 +34,7 @@ const tech = [
   {
     id: "js",
     name: "My Favorite Language",
-    image: "/images/icons/js.webp",
+    image: "/images/icons/Js.webp",
     width: 70,
     height: 70,
     class: "top-[15px] left-[215px]",
@@ -42,7 +42,7 @@ const tech = [
   {
     id: "laravel",
     name: "First Love",
-    image: "/images/icons/laravel.webp",
+    image: "/images/icons/Laravel.webp",
     width: 70,
     height: 70,
     class: "top-[185px] left-[185px]",
@@ -51,7 +51,7 @@ const tech = [
   {
     id: "Docker",
     name: "Make Everything Simple",
-    image: "/images/icons/docker.webp",
+    image: "/images/icons/Docker.webp",
     width: 70,
     height: 70,
     class: "top-[225px] left-[455px]",
@@ -59,7 +59,7 @@ const tech = [
   {
     id: "vite",
     name: "Basic and Fast",
-    image: "/images/icons/vite.webp",
+    image: "/images/icons/Vite.webp",
     width: 70,
     height: 70,
     class: "top-[35px] left-[545px]",
@@ -67,7 +67,7 @@ const tech = [
   {
     id: "next",
     name: "Most Powefull Today",
-    image: "/images/icons/nextjs.webp",
+    image: "/images/icons/Nextjs.webp",
     width: 70,
     height: 70,
     class: "top-[335px] left-[515px]",
@@ -75,7 +75,7 @@ const tech = [
   {
     id: "rq",
     name: "Easy to Fetch Data",
-    image: "/images/icons/reactquery.webp",
+    image: "/images/icons/Reactquery.webp",
     width: 70,
     height: 70,
     class: "top-[285px] left-[65px]",
