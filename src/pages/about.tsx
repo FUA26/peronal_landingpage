@@ -67,7 +67,7 @@ const tech = [
   {
     id: "next",
     name: "Most Powefull Today",
-    image: "/images/icons/Nextjs.webp",
+    image: "/images/icons/NextJs.webp",
     width: 70,
     height: 70,
     class: "top-[335px] left-[515px]",
@@ -75,7 +75,7 @@ const tech = [
   {
     id: "rq",
     name: "Easy to Fetch Data",
-    image: "/images/icons/Reactquery.webp",
+    image: "/images/icons/ReactQuery.webp",
     width: 70,
     height: 70,
     class: "top-[285px] left-[65px]",
