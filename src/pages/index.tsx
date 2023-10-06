@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/layout/Layout";
 
@@ -14,6 +13,7 @@ import { InferGetStaticPropsType } from "next";
 import ProjectCard from "@/components/sections/projectCard";
 import NoteCard from "@/components/sections/noteCard";
 import HeroSection from "../components/sections/hero-section";
+import Image from "@/components/common/NextImage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,21 +58,24 @@ export default function Home({
                 <Link
                   className="flex items-center gap-1"
                   href="https://drive.google.com/file/d/10TjqcZvnFxkFKEFUIPyBsARzenuTkHge/view?usp=sharing"
-                  target="_blank">
+                  target="_blank"
+                >
                   <FileTextIcon />
                   Resume
                 </Link>
                 <Link
                   className="flex items-center gap-1"
                   href="https://www.linkedin.com/in/fatih-ulil-albab-27b47b16b/"
-                  target="_blank">
+                  target="_blank"
+                >
                   <LinkedInLogoIcon />
                   Linkedin
                 </Link>
                 <Link
                   className="flex items-center gap-1"
                   href="https://github.com/FUA26"
-                  target="_blank">
+                  target="_blank"
+                >
                   <GitHubLogoIcon />
                   Github
                 </Link>

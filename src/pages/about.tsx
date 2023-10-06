@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/layout/Layout";
 
 import Sticker from "@/components/ui/sticker";
+import Image from "@/components/common/NextImage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -132,6 +132,7 @@ export default function Home() {
             className="rounded-2xl m-auto"
             src="/images/macbook.webp"
             alt="Profile Image"
+            priority={true}
             height={454}
             width={659}
           />

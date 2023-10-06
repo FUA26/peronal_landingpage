@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Badge } from "../ui/badge";
-import Image from "next/image";
+import Image from "../common/NextImage";
 
 type Props = {
   post: PostMeta;

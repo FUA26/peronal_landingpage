@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Image from "next/image";
+import Image from "../common/NextImage";
 
 interface StickerProps {
   height: number;
@@ -18,7 +18,8 @@ const Sticker: FC<StickerProps> = ({
 }) => {
   return (
     <div
-      className={`group/tooltip absolute  group/tooltip hover:z-50 ${imageClass}`}>
+      className={`group/tooltip absolute  group/tooltip hover:z-50 ${imageClass}`}
+    >
       <div className="relative">
         <Image
           src={imageUrl}
@@ -29,7 +30,8 @@ const Sticker: FC<StickerProps> = ({
         />
       </div>
       <div
-        className={`absolute flex w-max pointer-events-none opacity-0 group-hover/tooltip:opacity-100 mt-3 px-3 py-2 rounded-lg bg-white dark:bg-gray-700 shadow-lg transition left-1/2 -translate-x-1/2`}>
+        className={`absolute flex w-max pointer-events-none opacity-0 group-hover/tooltip:opacity-100 mt-3 px-3 py-2 rounded-lg bg-white dark:bg-gray-700 shadow-lg transition left-1/2 -translate-x-1/2`}
+      >
         <p className="p-0 text-gray-700 dark:text-gray-300">{name}</p>
       </div>
     </div>

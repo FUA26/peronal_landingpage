@@ -2,8 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { Badge } from "../ui/badge";
 import { format } from "date-fns";
-import Image from "next/image";
+
 import { CalendarIcon, TimerIcon } from "@radix-ui/react-icons";
+import Image from "../common/NextImage";
 
 type Props = {
   post: PostMeta;

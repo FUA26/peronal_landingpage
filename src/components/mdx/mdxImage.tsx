@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "../common/NextImage";
 
 type Props = {
   src: string;
