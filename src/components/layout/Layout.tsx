@@ -4,6 +4,7 @@ import * as React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import MetaHead from "../meta-head";
+import Container from "../ui/container";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className={inter.className}>
       <MetaHead />
       <Header />
-      <div className="mx-auto max-w-5xl ">{children}</div>
+      <Container>{children}</Container>
       <Footer />
     </div>
   );

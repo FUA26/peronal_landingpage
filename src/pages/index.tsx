@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import Layout from "@/components/layout/Layout";
-
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -16,6 +16,21 @@ import HeroSection from "../components/sections/hero-section";
 import Image from "@/components/common/NextImage";
 
 const inter = Inter({ subsets: ["latin"] });
+function FadeIn({ children }: any) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: { ease: "easeInOut", duration: 1 },
+      }}
+      viewport={{ once: true }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Home({
   higlight,
@@ -23,7 +38,9 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <HeroSection />
+      <FadeIn>
+        <HeroSection />
+      </FadeIn>
       <div className="flex min-h-screen flex-col justify-center">
         <div className="flex flex-col p-6 md:flex-row">
           <div className="flex basis-1/2 flex-row justify-center p-6">

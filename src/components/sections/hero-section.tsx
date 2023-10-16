@@ -1,35 +1,41 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import React from "react";
-import { Cursor, useTypewriter } from "react-simple-typewriter";
-
+import { motion } from "framer-motion";
 const HeroSection = () => {
-  const [text] = useTypewriter({
-    words: [
-      "Frontend Developer",
-      "Fullstack Developer",
-      "Project Manager",
-      "System Analyst",
-    ],
-    loop: true,
-    delaySpeed: 2000,
-  });
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6">
-      <div className=""></div>
-      <div className="text-center">
-        <h2 className="text-2xl font-semibold md:text-4xl">
-          Hi!, I am <span className="text-main">Fatih Ulil A</span>{" "}
-          <span> 👋🏼</span>
-        </h2>
-        <h1 className="text-4xl font-bold md:text-6xl">
-          {text}
-          <Cursor cursorBlinking />
+    <section className=" min-h-screen relative pt-16 mb-0 px-8 overflow-hidden rounded-b-3xl grid grid-cols-1 lg:grid-cols-3 lg:gap-4 lg:mb-0">
+      <div className="order-2 lg:col-span-2 py-4 lg:py-32 lg:order-1">
+        <span className="inline-block mt-4 mb-2 text-xl md:mb-3 md:text-2xl text-tertiary">
+          Hello, I&apos;m Fatih 👋🏼
+        </span>
+        <h1 className="text-4xl antialiased font-bold tracking-tight lg:leading-tight md:text-5xl ">
+          I&apos;m a Project Manager <br></br> with Fullstack Developer<br></br>
+          <span className="effect-shine text-primary">Superpowers</span>
         </h1>
       </div>
-      <div className="">
-        <ChevronDownIcon className="h-16 w-16 animate-bounce animate-pulse stroke-main" />
+
+      <div className="relative order-1 -z-10 lg:order-2">
+        <div className="inset-y-0 -mt-36 lg:-mt-40 lg:-mr-20"></div>
       </div>
-    </main>
+      <motion.img
+        src="FUA_logo.svg"
+        alt="cursor on a white box with abstract design 2"
+        initial={{
+          opacity: 0,
+          rotate: 0,
+        }}
+        animate={{
+          opacity: 1,
+          transition: { type: "spring", bounce: 0.35, mass: 2 },
+        }}
+        transition={{ type: "spring" }}
+        dragConstraints={{ left: -50, right: 50, top: -50, bottom: 20 }}
+        drag
+        whileTap={{ rotate: 20, scale: 0.95 }}
+        whileHover={{ scale: 1.02 }}
+        className="absolute cursor-pointer rounded-lg cursor-pointe w-36 left-1/3 top-20 md:w-36 lg:left-auto lg:right-32 lg:top-64 "
+      />
+    </section>
   );
 };
 export default HeroSection;
