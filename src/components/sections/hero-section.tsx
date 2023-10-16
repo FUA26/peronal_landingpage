@@ -8,7 +8,7 @@ const HeroSection = () => {
         <span className="inline-block mt-4 mb-2 text-xl md:mb-3 md:text-2xl text-tertiary">
           Hello, I&apos;m Fatih 👋🏼
         </span>
-        <h1 className="text-4xl antialiased font-bold tracking-tight lg:leading-tight md:text-5xl ">
+        <h1 className="text-4xl antialiased text-foreground font-bold tracking-tight lg:leading-tight md:text-5xl ">
           I&apos;m a Project Manager <br></br> with Fullstack Developer<br></br>
           <span className="effect-shine text-primary">Superpowers</span>
         </h1>
