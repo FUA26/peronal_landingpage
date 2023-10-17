@@ -33,7 +33,7 @@ function FadeIn({ children }: any) {
 }
 
 export default function Home({
-  higlight,
+  highlight,
   blogs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -102,24 +102,23 @@ export default function Home({
           </div>
         </div>
       </FadeIn>
-      <section className="grid p-6 gap-4 grid-cols-1 md:grid-cols-2">
-        <div className="basis-full md:basis-1/2">
-          <h2 className="py-4 text-4xl font-bold text-main">
-            Featured Projects
+      <FadeIn>
+        <section className="p-6">
+          <h2 className="py-4 text-4xl font-bold text-foreground">
+            Featured Projects.
           </h2>
           <p className="text-justify text-base/relaxed text-foreground/70">
-            Explore a curated collection of my selected projects that highlight
-            my expertise and passion in the world of technology. Each project
-            represents a unique journey where I&rsquo;ve designed innovative
-            solutions and overcome challenges with determination.
+            Discover a handpicked showcase of my top projects, illustrating my
+            tech expertise and passion.
           </p>
-          <Button className="my-6">Explore More Projects</Button>
-        </div>
 
-        {higlight.map((post, i) => {
-          return <ProjectCard key={i} post={post} />;
-        })}
-      </section>
+          <ul className="my-4">
+            {highlight.map((post, i) => {
+              return <ProjectCard key={i} post={post} />;
+            })}
+          </ul>
+        </section>
+      </FadeIn>
 
       <section className="my-10">
         <div className="w-full p-6 md:w-1/2 m-auto text-center">
@@ -159,10 +158,11 @@ export async function getStaticProps() {
     "vascomm-landing",
     "wizonline-builder",
   ];
-  const higlight = await filterBySlugs(projects, selectedSlugs);
+  const datas = await filterBySlugs(projects, selectedSlugs);
+  const highlight = datas.sort((a, b) => a.highlight - b.highlight);
   return {
     props: {
-      higlight,
+      highlight,
       blogs,
     },
   };

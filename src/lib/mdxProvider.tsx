@@ -89,5 +89,7 @@ export function filterBySlugs(
   content: PostMeta[],
   slugs: string[]
 ): PostMeta[] {
-  return content.filter((item) => slugs.includes(item.slug));
+  return content.filter((item) => {
+    return content.filter((item) => slugs.includes(item.slug));
+  });
 }
