@@ -14,6 +14,7 @@ import MDXComponents from "@/components/mdx/mdxComponent";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "@/components/common/NextImage";
+import BackButton from "@/components/common/BackButton";
 
 export default function SingleBlogPage({ code, frontmatter }: PostType) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
@@ -28,6 +29,9 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
       <Container>
         <div className="pt-16 flex flex-wrap">
           <div className="w-full">
+            <div className="mt-4">
+              <BackButton />
+            </div>
             <div className="p-6 w-full md:w-1/2 m-auto text-center">
               <h1 className="text-4xl font-semibold">{frontmatter.title}</h1>
               <p className="text-lg my-2 italic text-foreground/70">
@@ -43,7 +47,7 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
                 </div>
               </div> */}
             </div>
-            <div className="relative aspect-[16/9] w-full ">
+            <div className="relative h-80 ">
               <Image
                 className="rounded-2xl"
                 src={`/images/contents/${frontmatter.banner}`}
@@ -51,6 +55,7 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
                 fill
                 style={{
                   objectFit: "cover",
+                  objectPosition: "top",
                 }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
@@ -68,12 +73,9 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
                 />
               </article>
             </div>
-
-            <p className="my-6">
-              <Link href="/">
-                <Button>← Back to home</Button>
-              </Link>
-            </p>
+            <div className="py-6">
+              <BackButton url="/blog" to="Posts" />
+            </div>
           </div>
           {/* <div className="w-1/4"></div> */}
         </div>

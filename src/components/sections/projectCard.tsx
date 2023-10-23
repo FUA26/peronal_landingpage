@@ -22,6 +22,10 @@ export default function ProjectCard({ post }: Props) {
               alt={post.title}
               width={768}
               height={384}
+              style={{
+                objectFit: "cover",
+              }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         )}

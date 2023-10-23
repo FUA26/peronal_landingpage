@@ -14,6 +14,7 @@ import MDXComponents from "@/components/mdx/mdxComponent";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "@/components/common/NextImage";
+import BackButton from "@/components/common/BackButton";
 
 export default function SingleBlogPage({ code, frontmatter }: PostType) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
@@ -27,15 +28,20 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
     <Layout>
       <Container>
         <div className="pt-16 flex flex-wrap">
-          <div className="w-full p-6">
+          <div className="w-full px-6">
+            <div className="mt-4">
+              <BackButton />
+            </div>
             <div className="relative mt-4 h-80 w-full">
               <Image
                 className="rounded-2xl"
-                src={frontmatter.banner}
+                src={`/images/banners/${frontmatter.banner}`}
                 alt={`Image ${frontmatter.title}`}
                 fill
                 style={{
                   objectFit: "cover",
+                  display: "flex",
+                  justifyContent: "center",
                 }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
@@ -72,11 +78,9 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
               <h3 className="font-medium text-xl">Related:</h3>
               <div className="flex flex-row gap-4">{tags}</div>
             </section>
-            <p className="my-6">
-              <Link href="/">
-                <Button>← Back to home</Button>
-              </Link>
-            </p>
+            <div className="py-6">
+              <BackButton url="/blog" to="Posts" />
+            </div>
           </div>
           {/* <div className="w-1/4"></div> */}
         </div>

@@ -26,7 +26,7 @@ const Sticker: FC<StickerProps> = ({
           alt={name}
           height={height}
           width={width}
-          className={`group-hover/tooltip:scale-110 transition w-[${width}px] h-[${height}px] `}
+          className={` transition w-[${width}px] h-[${height}px] `}
         />
       </div>
       <div

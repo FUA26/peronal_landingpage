@@ -14,6 +14,7 @@ import ProjectCard from "@/components/sections/projectCard";
 import NoteCard from "@/components/sections/noteCard";
 import HeroSection from "../components/sections/hero-section";
 import Image from "@/components/common/NextImage";
+import Sticker from "@/components/ui/sticker";
 
 const inter = Inter({ subsets: ["latin"] });
 function FadeIn({ children }: any) {
@@ -31,6 +32,82 @@ function FadeIn({ children }: any) {
     </motion.div>
   );
 }
+
+const tech = [
+  {
+    id: "tailwind",
+    name: "I Love Tailwind",
+    image: "/images/icons/Tailwind.webp",
+    width: 80,
+    height: 45,
+    class: "top-[120px] left-[375px]",
+  },
+  {
+    id: "nest",
+    name: "My Favorite Backend Framework",
+    image: "/images/icons/Nest.webp",
+    width: 70,
+    height: 70,
+    class: "top-[350px] left-[235px]",
+  },
+  {
+    id: "ts",
+    name: "Still learn",
+    image: "/images/icons/Ts.webp",
+    width: 70,
+    height: 70,
+    class: "top-[55px] left-[75px]",
+  },
+  {
+    id: "js",
+    name: "My Favorite Language",
+    image: "/images/icons/Js.webp",
+    width: 70,
+    height: 70,
+    class: "top-[15px] left-[215px]",
+  },
+  {
+    id: "laravel",
+    name: "First Love",
+    image: "/images/icons/Laravel.webp",
+    width: 70,
+    height: 70,
+    class: "top-[185px] left-[185px]",
+  },
+
+  {
+    id: "Docker",
+    name: "Make Everything Simple",
+    image: "/images/icons/Docker.webp",
+    width: 70,
+    height: 70,
+    class: "top-[225px] left-[455px]",
+  },
+  {
+    id: "vite",
+    name: "Basic and Fast",
+    image: "/images/icons/Vite.webp",
+    width: 70,
+    height: 70,
+    class: "top-[35px] left-[545px]",
+  },
+  {
+    id: "next",
+    name: "Most Powefull Today",
+    image: "/images/icons/NextJs.webp",
+    width: 70,
+    height: 70,
+    class: "top-[335px] left-[515px]",
+  },
+  {
+    id: "rq",
+    name: "Easy to Fetch Data",
+    image: "/images/icons/ReactQuery.webp",
+    width: 70,
+    height: 70,
+    class: "top-[285px] left-[65px]",
+  },
+];
 
 export default function Home({
   highlight,
@@ -119,33 +196,55 @@ export default function Home({
           </ul>
         </section>
       </FadeIn>
-
-      <section className="my-10">
-        <div className="w-full p-6 md:w-1/2 m-auto text-center">
-          <h2 className="py-4 text-4xl font-bold text-main">
-            Featured Projects
+      <FadeIn>
+        <section className="p-6">
+          <h2 className="py-4 text-4xl font-bold text-foreground">
+            Featured Posts.
           </h2>
-          <p className="text-center text-base/relaxed text-foreground/70">
+          <p className="text-justify text-base/relaxed text-foreground/70">
             Browse through my blog posts. Discover insights, stories, and
             knowledge that I share.
           </p>
-        </div>
-        <div className="grid p-6 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-          {blogs.map((post, i) => {
-            return (
-              <div key={i} className="w-full">
-                <NoteCard post={post} />
-              </div>
-            );
-          })}
-        </div>
-
-        <div className=" text-center">
-          <Button variant="outline" className="my-6">
-            Explore More Projects
-          </Button>
-        </div>
-      </section>
+          <div className="grid p-6 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+            {blogs.map((post, i) => {
+              return (
+                <div key={i} className="w-full">
+                  <NoteCard post={post} />
+                </div>
+              );
+            })}
+          </div>
+          <div className=" text-center">
+            <Button variant="outline" className="my-6">
+              Explore More Projects
+            </Button>
+          </div>
+        </section>
+      </FadeIn>
+      <FadeIn>
+        <section className="p-6">
+          <div className="relative w-[659px] h-[454px] m-auto hidden md:block">
+            <Image
+              className="rounded-2xl m-auto"
+              src="/images/macbook.webp"
+              alt="Profile Image"
+              priority={true}
+              height={454}
+              width={659}
+            />
+            {tech.map((items) => (
+              <Sticker
+                key={items.id}
+                imageClass={items.class}
+                width={items.width}
+                height={items.height}
+                imageUrl={items.image}
+                name={items.name}
+              />
+            ))}
+          </div>
+        </section>
+      </FadeIn>
     </Layout>
   );
 }

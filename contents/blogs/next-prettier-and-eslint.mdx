@@ -1,0 +1,170 @@
+---
+title: "NextJs: Setting Up Eslint and Prettier"
+publishedAt: "2023-10-09"
+desc: "Master clean code practices with a swift guide to integrating Eslint and Prettier in your Next.js setup."
+tags: ["next", "prettier", "eslint"]
+highlight: 99
+category: "Tutorial"
+banner: "nextjs-1.webp"
+---
+
+# **Introduction**
+
+Salah satu parameter dari code quality sebuah project adalah konsistensi. Kebanyakan sebuah project di develop lebih dari satu orang, hal ini menjadikan besarnya kemungkinan terjadinya perbedaan dari style code yang menyebabkan inconsistensi dari code sehingga project tersebut menjadi susah untuk dimanage. Salah satu cara paling mudah adalah dengan adanya kesepakatan dari team yang biasanya berbentuk code guideline. Namun hal ini masih belum optimal karena akan sangat bergantung pada masing - masing individu.
+
+Salah satu cara yang efektif adalah menggunakan **Prettier** dan **Eslint**. **Prettier** adalah sebuah tools yang dapat menformat code sesuai dengan standart yang telah didefinisiakan. Beberapa standart yang biasanya di set pada prettier seperti penataan spasi, penempatan kurung, dan sebagainya. Sedangkan **Eslint** akan membantu kita untuk menerapkan standart pada penulisan syntax pada bahasa pemprograman yang kita pakai. Eslint lebih berfokus pada deteksi kemungkinan kesalahan dan standarisasi code.
+
+# \***\*Prerequisites\*\***
+
+Sebelum memulai langkah - langkah setup Prettier dan Eslint pada Nextjs ada beberapa hal yang perlu disiapkan, antara lain:
+
+- Installasi Nextjs
+- Pemilihan pendekatan mana yang akan digunakan.
+
+# Installasi
+
+Prettier dan Eslint akan kita install sebagai dev dependenci yang artinya dependency ini hanya dibutuhkan pada tahap development dan tidak digunakan pada environment production. Kita dapat menambahkan Prettier dan Eslint pada project nextjs kita dengan command berikut ini:
+
+```bash
+# Install Prettier dan ESLint
+npm install --save-dev prettier eslint eslint-config-next
+
+# Install plugin TypeScript untuk ESLint
+npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+
+Setelah proses installisasi selesai, kita akan mendefinisikan roles yang nantinya akan diterapkan.
+
+### Setup Eslint
+
+**.eslintrc.js**
+
+```bash
+module.exports = {
+	env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
+  extends: [
+		'eslint:recommended',
+    'next',
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
+  rules: {
+    // Atur aturan tambahan jika diperlukan
+  },
+	globals: {
+    React: true,
+    JSX: true,
+  },
+};
+```
+
+Pada file diatas kita telah mendefinisikan setup eslint. Mari kita coba bedah fungsi masing - masing bagian diatas:
+
+- **env**: Merupakan definisi dari environment dari project diatas akan dijalankan. Pada case diatas saya definisikan project akan berjalan pada browser,es2021 dan node.
+- **parser**: Menggunakan parser TypeScript untuk memproses file TypeScript.
+- **plugins**: Merupakan list plugin - plugin yang digunakan. Saat ini banyak sekali lagi plugin yang dapat dipilih sesuai dengan kebutuhan. Pada contoh diatas adalah menggunakan **`@typescript-eslint`** yang menyediakan aturan spesifik untuk TypeScript.
+- **extends**: Merupakan yang list aturan yang sudah ada dan akan kita ambil dan gunakan pada project ini.
+  - `**eslint:recommended`\*\* : Menggunakan aturan-aturan rekomendasi dari ESLint.
+  - `**next**` : Menyertakan aturan-aturan yang direkomendasikan oleh Next.js.
+  - **`next/core-web-vitals`**: Menyertakan aturan untuk mengukur Core Web Vitals di Next.js.
+  - **`@typescript-eslint/recommended`**: Menggunakan aturan rekomendasi untuk TypeScript dari @typescript-eslint.
+  - **`prettier`**: Menggunakan aturan untuk integrasi dengan Prettier.
+- **rules**: Merupakan bagian untuk mendefinisikan atau menyesuaikan aturan sesuai dengan kebutuhan project. Pada bagian ini memungkinkan kita untuk melakukan setup custom.
+- **globals**: Merupakan block untuk mendefinisikan bagian mana yang dianggap sebagai bagian global variable. Bagian yang didefinisikan pada blok ini nantinya akan di bypass dari aturan eslint
+
+### Setup Prettier
+
+.**prettierrc.js**
+
+```bash
+module.exports = {
+  arrowParens: 'avoid',
+  bracketSpacing: true,
+  htmlWhitespaceSensitivity: 'css',
+  insertPragma: false,
+  bracketSameLine: false,
+  jsxSingleQuote: true,
+  printWidth: 120,
+  proseWrap: 'preserve',
+  quoteProps: 'as-needed',
+  requirePragma: false,
+  semi: false,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'none',
+  useTabs: false
+}
+```
+
+File diatas merupakan definisi aturan yang akan digunakan Prettier untuk menjaga konsitensi dari code kita. Penjelasan singkat dari setup diatas adalah:
+
+- **`arrowParens: 'avoid'`**: Hindari tanda kurung pada parameter fungsi dengan satu parameter.
+- **`bracketSpacing: true`**: Tambahkan spasi di sekitar kurung kurawal dalam objek.
+- **`htmlWhitespaceSensitivity: 'css'`**: Menyesuaikan sensitivitas spasi untuk HTML seperti di CSS.
+- **`insertPragma: false`**: Tidak menyisipkan prama di atas file.
+- **`bracketSameLine: false`**: Menempatkan kurung kurawal pada baris baru.
+- **`jsxSingleQuote: true`**: Menggunakan single quote untuk string JSX.
+- **`printWidth: 120`**: Membatasi panjang baris maksimum ke 120 karakter.
+- **`proseWrap: 'preserve'`**: Menjaga text tidak warp sehingga apa adanya.
+- **`quoteProps: 'as-needed'`**: Mengutip properti objek hanya jika diperlukan.
+- **`requirePragma: false`**: Tidak memerlukan prama untuk memformat.
+- **`semi: false`**: Tidak menggunakan titik koma sebagai akhir baris code.
+- **`singleQuote: true`**: Menggunakan single quote daripada double quote untuk string.
+- **`tabWidth: 2`**: Mengatur lebar tab menjadi 2 spasi.
+- **`trailingComma: 'none'`**: Tidak menyertakan koma tambahan pada array dan objek akhir.
+- **`useTabs: false`**: Menggunakan spasi bukan tab untuk indentasi.
+
+### Setup Ignore File
+
+Pada sebuah project terdiri dari berbagai jenis file, ada kalanya beberapa bagian tidak perlu masuk pada pengecekan prettier dan eslint. Maka kita butuh untuk mendefinisikan bagian mana pada file ignore seperti dibawah ini:
+
+.**eslintignore**
+
+```bash
+node_modules
+.next
+public
+```
+
+**.prettierignore**
+
+```bash
+node_modules
+.next
+public
+```
+
+### Setup Commend Script
+
+Langkah terakhir adalah melakukan setup di package.json agar mudah untuk menjalankan prettier dan eslint. Selain itu dengan melakukan setup script di package.json nantinya akan digunakan untuk CI/CD.
+
+```bash
+{
+... ,
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier -c .",
+    "format:fix": "prettier -w ."
+  },
+}
+```
+
+- `lint` : Ketika dijalankan akan melakukan pengecekan eslint. Hasil dari commend ini adalah list file mana saja yang msh belum sesuai dengan rules yang sudah didefinisikan.
+- `lint:fix` : Perintah ini digunakan untuk auto fixing dari issue yang ada dari eslint scan.
+- `format` : Ketika perintah dijalankan akan melakukan pengecekan sesuai dengan rules prettier yang terlah didefinisikan.
+- `format:fix` : Perintah ini digunakan untuk auto fixing dari issue prettier yang ditemukan.
+
+# Conclusion
+
+Kesimpulan dari penggunaan Prettier dan Eslint pada sebuah project adalah kedua tools ini sangat membantu developer untuk menjaga konsistensi dari code yang telah dibuat. Secara tidak langsung akan membuat kita sebagai developer lebih aware dan terbiasa dengan standart umum yang ada.
