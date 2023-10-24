@@ -7,7 +7,7 @@
     --main: 44 99% 49%;
     --main-foreground: 217 10% 25%;
 
-    --background: 240 11% 96%;
+    --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
 
     --muted: 220 14.3% 95.9%;
@@ -80,5 +80,26 @@
   }
   body {
     @apply bg-background text-foreground/70;
+  }
+}
+
+.effect-shine {
+  mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.5) 20%,
+    rgb(0, 0, 0) 40%,
+    rgb(0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.5) 80%
+  );
+  mask-size: 200%;
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  from {
+    mask-position: 100%;
+  }
+  to {
+    mask-position: -100%;
   }
 }

@@ -17,13 +17,13 @@ export default function NoteCard({ post }: Props) {
         <article className="h-full overflow-hidden rounded-lg shadow transition hover:shadow-lg dark:shadow-gray-700/25">
           <Image
             alt="Office"
-            src={post.banner}
+            src={`/images/banners/${post.banner}`}
             className="h-56 w-full object-cover"
             width={2070}
             height={1380}
           />
 
-          <div className="h-full bg-white p-4 dark:bg-gray-900 sm:p-6">
+          <div className="h-full bg-white p-4 dark:bg-gray-800 sm:p-6">
             <h3 className="mt-0.5 text-lg text-gray-900 dark:text-white font-medium">
               {post.title}
             </h3>

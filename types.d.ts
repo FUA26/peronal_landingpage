@@ -8,6 +8,7 @@ type PostMeta = {
   category: string;
   wordCount: number;
   readingTime: ReadTimeResults;
+  highlight: number;
   toc: any
 };
 type PostType = {

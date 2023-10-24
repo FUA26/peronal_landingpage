@@ -1,0 +1,136 @@
+---
+title: "NextJs: Husky, Linting Stage, and Commit Conventions"
+publishedAt: "2023-10-10"
+desc: "Elevate your development game with Husky, a powerful linting stage, and commit conventions for a seamless Next.js experience."
+tags: ["next", "husky", "linting", "commit"]
+highlight: 99
+category: "Tutorial"
+banner: "nextjs-2.webp"
+---
+
+# **Introduction**
+
+Setelah kita setup Prettier dan Eslint pada sebuah project untuk menjaga konsistensi dari code. Ada dua tools atau package yang tidak kalah bermanfaat selama proses development. Kedua dependency tersebut adalah Husky dan Conventional Commits. Prettier dan Eslint dapat berjalan dengan menjalankan script yang telah kita definisikan di package.json. Tentu hal tersebut masih belum optimal karena msh mungkin developer tidak menjalankan script tersebut. Oleh karena itu kita akan menggunakan sang penjaga ya itu “Husky”.
+
+Husky merupakan sebuah dev dependency yang mampu mejalankan sebuah script pada kondisi tertentu. Dengan kemampuan tersebut dapat kita manfaatkan dimana prettier dan eslint harus dijalankan setiap kita akan melakukan commit atau yang lazim disebut dengan pre-commit. Hal ini akan membuat standart baru dimana code yang akan di commit sudah sesuai dengan rules yang dibuat.
+
+Setelah dari sisi code sudah dapat kita jaga konsistensinya. Maka untuk penamaan dari commit juga perlu adanya rules agar tiap commit yang ada mudah dimenggerti dan dipahami. Kita akan menggunakan Conventional Commits sebagai acuan dari commit project kita.
+
+# \***\*Prerequisites\*\***
+
+Sebelum memulai langkah - langkah setup Husky dan Conventional Commits pada Nextjs ada beberapa hal yang perlu disiapkan, antara lain:
+
+- Installasi Nextjs
+- Setup Eslint
+- Setup Prettier
+
+# Installasi Husky
+
+Seperti Prettier dan Eslint, Husky dan Conventional Commits hanya kita butuhkan selama proses development. Sehingga kita akan menambahkan dependecy ini pada project kita dengan commend sebagai berikut:
+
+```bash
+# Install Depedency
+npm install --save-dev husky
+
+# Initialize Husky
+npx husky install
+
+# Generate pre-commit file
+npx husky add .husky/pre-commit "npm run lint && npm run format"
+```
+
+Berikut adalah hasil generate dari command diatas `pre-commit` :
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run lint && npm run format
+```
+
+Pada commend generate pre-commit diatas kita akan mendefinisikan bahwa setiap ada commit baru husky akan otomatis run npm lint dan formart. Kedua npm ini merujuk pada custom script yang telah didefine pada setup prettier dan eslint. Dengan demikian kita telah berhasil untuk define pre-commit action.
+
+# Install and Setup Lint Staged
+
+Namun setup diatas masih belum optimal, dimana script yang dijalankan oleh precommit akan scan dan format seluruh file yang ada pada project kita termasuk file yang tidak masuk dalam **_stage chages_** commit yang akan dijalankan. Oleh karena itu kita harus melakukan sedikit custom agar script pre-commti hanya berjalan pada file yang masuk pada commit tersebut. Untuk itu kita butuh dependency tambahan bernama **lint-staged**. Sebuah package yang nantinya akan membantu kita untuk hanya run sebuah script pada stage chage git.
+
+```bash
+# Install Depedency
+npm install lint-staged -D
+```
+
+Setelah installasi selesai kita perlu define configurasi dari lint-staged pada sebuah file `lint-staged.config.js`
+
+```bash
+module.exports = {
+  '**/*.{js,jsx,ts,tsx}': [
+    'prettier -w .',
+    'tsc -p tsconfig.json',
+    'eslint --fix',
+    'next lint .',
+  ],
+};
+```
+
+Langkah terakhir adalah kita harus merubah script pada file `pre-commit` menjadi seperti berikut:
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
+```
+
+Dan demikianlah langkah langkah yang dapat kita lakukan untuk setup husky dan lint-stage agar otomatis berjalan setiap ada commit baru pada sebuah project.
+
+# Install and Setup Commitlint
+
+Salah satu hal yang perlu dijaga konsistensinya selain code adalah pesan commit. Ketika berkerja secara team maka kita akan menjumpai banyak developer lainnya yang mungkin punya style masing masing dalam penulisan commit. Maka dari itu kita butuh package yang mampu untuk membuat standarisasi untuk commit tersebut.
+
+```bash
+npm install --save-dev @commitlint/cli @commitlint/config-conventional
+```
+
+Kedua package ini kita install sebagai devDependencies yang berarti hanya akan dipakai pada saat development. Setelah installasi selesai langkah berikutnya adalah dengan melakukan setup pada `.commitlintrc.js` . Pada file ini kita akan mendefinisikan roles dari pesan gitcommti pada project ini.
+
+```bash
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat',
+        'fix',
+        'docs',
+        'chore',
+        'style',
+        'refactor',
+        'ci',
+        'test',
+        'perf',
+        'revert',
+        'vercel',
+      ],
+    ],
+  },
+};
+```
+
+Pada contoh diatas kita coba mendefinisikan bahwa commitlint akan extend dari setup `config-conventional` . Setelah itu kita akan membuat rules custom dimana nantinya commit harus diawali dengan type dari commt tersebut. Type yang dimaksuda akan merujuk pada list yang telah didefinisikan. Untuk lebih jelas mengena fungsi dan perbedaan masing masing pada detail berikut.
+
+# Setup Husky Commit Lint
+
+Sama seperti pre-commit, agar commit linting dapat berjalan setiap ada commit kita perlu bantuan dari Husky. Untuk itu kita butuh file baru untuk define script apa yang harus dijalankan untuk menjaga konsistensi commit message.
+
+```bash
+# Generate
+npx husky add .husky/commit-msg "npx commitlint --edit $1"
+```
+
+Commend diatas akan generate file baru pada folder `husky` bernama `commit-msg` sebagai setup untuk linting pesan commit. Pada file tersebut kita define `npx commitlint --edit $1` yang berarti kita akan check title atau message commit yang sedang dilakukan dan commit akan ditolak jika tidak sesuai dengan rules yang telah dibuat.
+
+# Conclusion
+
+Penggunaan package Husky pada saat development dapat membantu kita untuk run sebuah script secara automatis. Kemampuan tersebuat dapat kita gunakan untuk run script prettier, eslint dan commitlint sebagai bentuk menjaga code

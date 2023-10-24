@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 export function MainNavMenu() {
   const pathname = usePathname();
   return (
-    <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
+    <nav className=" items-center space-x-6 text-sm font-medium flex">
       {siteConfig.mainNav.map(
         (item) =>
           item.href && (
@@ -16,10 +16,13 @@ export function MainNavMenu() {
               key={item.href}
               href={item.href}
               className={cn(
-                "transition-colors hover:text-foreground/80",
-                pathname === "/docs" ? "text-foreground" : "text-foreground/60"
-              )}>
-              <p className="text-base">{item.title}</p>
+                "transition-colors hover:text-primary",
+                pathname === item.href
+                  ? "text-foreground"
+                  : "text-foreground/60"
+              )}
+            >
+              {item.title}
             </Link>
           )
       )}
