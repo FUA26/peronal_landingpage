@@ -3,8 +3,6 @@ import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
 import { join } from "path";
 import readingTime from "reading-time";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
@@ -28,11 +26,7 @@ export async function getFileBySlug(type: CategoryType, slug: string) {
     source,
     mdxOptions(options) {
       options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkGfm];
-      options.rehypePlugins = [
-        ...(options?.rehypePlugins ?? []),
-        rehypeSlug,
-        rehypePrettyCode,
-      ];
+      options.rehypePlugins = [...(options?.rehypePlugins ?? []), rehypeSlug];
 
       return options;
     },

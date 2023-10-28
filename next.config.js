@@ -3,8 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["images.unsplash.com"],
-    unoptimized: true,
+    // unoptimized: true,
   },
 };
 
-module.exports = nextConfig;
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer(nextConfig);

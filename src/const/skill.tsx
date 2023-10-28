@@ -1,18 +1,12 @@
 import { BiLogoPostgresql } from "react-icons/bi";
 import { BsFillBootstrapFill } from "react-icons/bs";
 import {
-  SiChakraui,
   SiClickup,
   SiCss3,
   SiDocker,
-  SiExpo,
   SiExpress,
-  SiFirebase,
-  SiFramer,
   SiGithub,
   SiGithubactions,
-  SiGraphql,
-  SiGulp,
   SiHtml5,
   SiJavascript,
   SiJenkins,
@@ -27,15 +21,11 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiNotion,
-  SiNuxtdotjs,
   SiPhp,
   SiPrisma,
   SiRadixui,
   SiReact,
-  SiReacthookform,
   SiReactquery,
-  SiReactrouter,
-  SiReacttable,
   SiRedux,
   SiSass,
   SiStorybook,
@@ -43,7 +33,6 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVite,
-  SiVuedotjs,
 } from "react-icons/si";
 
 type stacksProps = {

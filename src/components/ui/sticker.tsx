@@ -26,6 +26,7 @@ const Sticker: FC<StickerProps> = ({
           alt={name}
           height={height}
           width={width}
+          priority
           className={` transition w-[${width}px] h-[${height}px] `}
         />
       </div>

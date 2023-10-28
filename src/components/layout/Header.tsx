@@ -1,8 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Container from "../ui/container";
 import Link from "next/link";
-import { MainNavMenu } from "./mainNavMenu";
-import ToggleThame from "./themeToggle";
+const MainNavMenu = dynamic(() => import("./mainNavMenu"));
+const ToggleThame = dynamic(() => import("./themeToggle"));
 
 export default function Header() {
   return (

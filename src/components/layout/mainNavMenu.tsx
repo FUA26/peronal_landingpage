@@ -1,11 +1,11 @@
-import * as React from "react";
+import React from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 
-export function MainNavMenu() {
+export default function MainNavMenu() {
   const pathname = usePathname();
   return (
     <nav className=" items-center space-x-6 text-sm font-medium flex">

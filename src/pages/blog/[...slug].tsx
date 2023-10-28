@@ -1,18 +1,16 @@
 import { getMDXComponent } from "mdx-bundler/client";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
-import * as React from "react";
+import React from "react";
 import { format } from "date-fns";
 import { getFileBySlug, getAllFiles } from "@/lib/mdxProvider";
 import Layout from "@/components/layout/Layout";
 import Container from "@/components/ui/container";
 
 import { CalendarIcon, TimerIcon } from "@radix-ui/react-icons";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import Link from "next/link";
+
 import MDXComponents from "@/components/mdx/mdxComponent";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import Image from "@/components/common/NextImage";
 import BackButton from "@/components/common/BackButton";
 
@@ -90,7 +88,7 @@ export default function SingleBlogPage({ code, frontmatter }: PostType) {
 }
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllFiles("blogs");
-  console.log(posts);
+
   return {
     paths: posts.map((slug) => ({
       params: {

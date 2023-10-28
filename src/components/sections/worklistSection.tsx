@@ -28,7 +28,7 @@ const worksHistory = [
     ],
     startDate: "13-09-2021",
     endDate: "01-31-2023",
-    src: "/sepasang_logo.png",
+    src: "/sepasang_logo.webp",
     url: "https://sepasangjanji.com/",
   },
   {
@@ -42,7 +42,7 @@ const worksHistory = [
     ],
     startDate: "13-09-2021",
     endDate: "01-31-2023",
-    src: "/majoo_logo.png",
+    src: "/majoo_logo.webp",
     url: "https://majoo.id/",
   },
   {
@@ -66,7 +66,7 @@ const worksHistory = [
     ],
     startDate: "11-31-2018",
     endDate: "09-15-2021",
-    src: "vascomm_logo.png",
+    src: "/vascomm_logo.webp",
     url: "https://vascomm.co.id/",
   },
 ];
@@ -102,12 +102,12 @@ export default function SectionWorkList() {
               className="flex flex-col items-start justify-between px-3 py-2 last-of-type:pb-6 md:items-center md:space-x-2 md:flex-row"
             >
               <div className="flex items-center justify-between w-full md:w-fit space-x-4">
-                <span className="md:pl-[76px] text-base text-muted-foreground">
+                <span className="md:pl-[76px] text-base text-foreground">
                   {role.role}
                 </span>
               </div>
               <div className="flex flex-col items-end justify-between w-full md:w-fit md:space-x-4 pr-4">
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-foreground">
                   {role.endDate
                     ? `${formatDate(role.startDate)} - ${formatDate(
                         role.endDate
@@ -115,7 +115,7 @@ export default function SectionWorkList() {
                     : `${formatDate(role.startDate)} - Present`}
                 </span>
                 {role.endDate && (
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-sm text-foreground">
                     {calculateDuration(role.startDate, role.endDate)}
                   </span>
                 )}

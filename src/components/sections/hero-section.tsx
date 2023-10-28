@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { motion } from "framer-motion";
 const HeroSection = () => {
@@ -9,7 +8,7 @@ const HeroSection = () => {
           Hello, I&apos;m Fatih 👋🏼
         </span>
         <h1 className="text-4xl antialiased text-foreground font-bold tracking-tight lg:leading-tight md:text-5xl ">
-          I&apos;m a Project Manager <br></br> with Fullstack Developer<br></br>
+          I&apos;m a Project Manager<br></br> with Fullstack Developer <br></br>
           <span className="effect-shine text-primary">Superpowers</span>
         </h1>
       </div>
