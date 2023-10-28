@@ -1,9 +1,7 @@
 import { InferGetStaticPropsType } from "next";
-import Link from "next/link";
 import Layout from "@/components/layout/Layout";
 
-import { filterBySlugs, getAllFileMeta } from "@/lib/mdxProvider";
-import { Badge } from "@/components/ui/badge";
+import { getAllFileMeta } from "@/lib/mdxProvider";
 import ProjectCard from "@/components/sections/projectCard";
 import Container from "@/components/ui/container";
 
@@ -34,8 +32,7 @@ export default function Home({
 
 export async function getStaticProps() {
   const projects = await getAllFileMeta("projects");
-  console.log(projects);
-  // console.log(higlight);
+
   return {
     props: {
       projects,

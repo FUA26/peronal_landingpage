@@ -1,8 +1,6 @@
 import clsx from "clsx";
-import * as React from "react";
-import { IoLogoVercel } from "react-icons/io5";
+import React from "react";
 import {
-  SiNextdotjs,
   SiGmail,
   SiInstagram,
   SiFiverr,
@@ -24,7 +22,7 @@ export default function SocialMedia() {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost">
+            <Button variant="ghost" aria-label="email">
               <SiGmail
                 className={clsx(
                   "h-6 w-6",
@@ -44,7 +42,7 @@ export default function SocialMedia() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link href={scl.href} target="black">
-                <Button variant="ghost">
+                <Button variant="ghost" aria-label={scl.id}>
                   <scl.icon
                     className={clsx(
                       "h-6 w-6",

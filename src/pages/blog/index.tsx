@@ -1,10 +1,6 @@
 import { InferGetStaticPropsType } from "next";
-import Link from "next/link";
 import Layout from "@/components/layout/Layout";
-
-import { filterBySlugs, getAllFileMeta } from "@/lib/mdxProvider";
-import { Badge } from "@/components/ui/badge";
-import ProjectCard from "@/components/sections/projectCard";
+import { getAllFileMeta } from "@/lib/mdxProvider";
 import Container from "@/components/ui/container";
 import NoteCard from "@/components/sections/noteCard";
 
@@ -39,8 +35,7 @@ export default function Blog({
 
 export async function getStaticProps() {
   const projects = await getAllFileMeta("blogs");
-  // console.log(projects);
-  // console.log(higlight);
+
   return {
     props: {
       projects,

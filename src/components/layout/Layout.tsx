@@ -1,8 +1,11 @@
 /* eslint-disable import/extensions */
 import { Inter } from "next/font/google";
-import * as React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import React from "react";
+import dynamic from "next/dynamic";
+
+const Header = dynamic(() => import("./Header"));
+const Footer = dynamic(() => import("./Footer"));
+
 import MetaHead from "../meta-head";
 import Container from "../ui/container";
 

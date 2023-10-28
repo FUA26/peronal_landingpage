@@ -52,12 +52,14 @@
     "remark-slug": "^7.0.1",
     "sharp": "^0.32.5",
     "shiki": "^0.14.3",
+    "simple-icons": "^9.19.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
     "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/nprogress": "^0.2.2",
     "prettier": "^3.0.0",

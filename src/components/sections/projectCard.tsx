@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Badge } from "../ui/badge";
+
 import Image from "../common/NextImage";
 import { Button } from "../ui/button";
 

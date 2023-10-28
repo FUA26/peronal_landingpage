@@ -1,9 +1,9 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import React from "react";
 import Logo from "../ui/logo";
-import { MainNavMenu } from "./mainNavMenu";
 import Container from "../ui/container";
-import SocialMedia from "../ui/social-media";
+const SocialMedia = dynamic(() => import("../ui/social-media"));
 
 export default function Footer() {
   return (
